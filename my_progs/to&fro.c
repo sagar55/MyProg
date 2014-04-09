@@ -1,0 +1,39 @@
+#include<stdio.h>
+main()
+{
+      char a[20][200],s[200];
+      int n,i,j,k,l;
+      scanf("%d",&n);
+      while(n!=0)
+      {
+                 scanf("%s",s);
+                 j=0;
+                 k=0;
+                 while(s[j]!='\0')
+                 {
+                 for(i=0;i<n;i++)
+                 {
+                                 a[k][i]=s[j];
+                                    j++;            
+                                    }
+                                    k++;
+                                    if(s[j]!='\0'){
+                       for(i=n-1;i>=0;i--)
+                       {
+                                          a[k][i]=s[j];
+                                          j++;
+                                          }
+                                          k++;}
+                                          else
+                                          break;
+                                          }
+                       for(i=0;i<n;i++)
+                       {
+                                       for(j=0;j<k;j++)
+                                        printf("%c",a[j][i]);
+                       }
+                       printf("\n");
+                       scanf("%d",&n);
+                       }
+                       getch();
+                       }

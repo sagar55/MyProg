@@ -1,0 +1,60 @@
+#include<stdio.h>
+main()
+{
+      long long int n,t,k,f,i;
+      scanf("%lld",&t);
+      while(t--)
+      {
+                scanf("%lld%lld",&n,&k);
+                if((k&(k-1))==0)
+                {  k=log2(k);
+                 if(k%2==0)
+                 printf("Male\n");
+                 else
+                  printf("Female\n");
+                  }
+                  else{
+                       if(n<52){
+                                n=pow(2,n-1);
+                if(k>(n>>1))
+                {f=0;
+                k=k-(n>>1);}
+                else
+                f=1;
+                n=n>>1;}
+                else{
+                     i=log2(k)+1;
+                     n=pow(2,i);
+                     f=1;
+                     }
+                while(((k&(k-1))!=0)&&k!=1&&(n!=k))
+                {
+                                 if(k>(n>>1))
+                                 {f=f^1;
+                                 k=k-(n>>1);}
+                                 n=n>>1;
+                                 }
+                                 if((k&(k-1))==0||(n!=k))
+                                 {k=log2(k);
+                                 if(f==1){
+                 if(k%2==0)
+                 printf("Male\n");
+                 else
+                  printf("Female\n");}
+                  else{
+                        if(k%2==0)
+                 printf("Female\n");
+                 else
+                  printf("Male\n");
+                       }
+                  }else
+                  {if(f==1)
+                   printf("Male\n");
+                   else
+                   printf("Female\n");}
+                   }
+                   }
+                   return 0;
+                   }
+                
+                

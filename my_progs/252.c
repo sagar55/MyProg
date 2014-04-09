@@ -1,0 +1,53 @@
+main()
+{
+      int n,t,i,a[101],best,prev,current,nb,index,upto,in;
+       scanf("%d",&t);
+      for(i=0;i<t;i++)
+      scanf("%d",&a[i]);
+      current=0;
+      best=a[current];
+      upto=a[current];
+      index=1;
+      prev=best;
+      while(index<t)
+      {
+        upto^=a[index];                             
+        if(upto>=best){
+                       prev=a[index];
+             nb=prev;
+             in=index;
+             in--;
+         while(in>=current)
+         {
+         prev^=a[in];
+         if(prev>=nb)
+          nb=prev;
+          else
+          break;
+          }
+          if(nb>=best)
+           { upto=nb;best=nb;}}
+         else
+       {
+             current++;  
+             prev=a[index];
+             nb=prev;
+             in=index;
+             in--;
+         while(in>=current)
+         {
+         prev^=a[in];
+         if(prev>=nb)
+          nb=prev;
+          else
+          break;
+          }
+          upto=nb;
+          if(upto>=best)
+                        best=upto;
+                }
+                printf("%d %d\n",upto,best);
+                index++;
+                }
+                getch();
+                }

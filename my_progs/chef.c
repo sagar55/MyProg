@@ -1,0 +1,29 @@
+#include<stdio.h>
+main()
+{
+      int a,b,p[70],t,q[70],i,j,min;
+      scanf("%d",&t);
+      while(t--)
+      {
+               scanf("%d",&a);
+               for(i=0;i<a;i++)
+               scanf("%d",&p[i]);
+                               q[a-1]=0;
+               for(i=a-2;i>=0;i--)
+               {
+               if(p[i]>=a-i)
+               q[i]=1;
+               else{
+                    min=a;
+               for(j=1;j<=p[i];j++)
+                               {
+                                   if(q[j+i]<min)
+                                   min=q[j+i];
+                               }
+                               q[i]=min+1;
+                }
+                }
+                printf("%d\n",q[0]);
+                }
+      return 0;
+      }

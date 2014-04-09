@@ -1,0 +1,107 @@
+#include<stdio.h>
+void merge_sort(int a[],int low,int high)
+{
+     int mid;
+     if(low<high)
+     {
+                 mid=(low+high)/2;
+                 merge_sort(a,low,mid);
+                 merge_sort(a,mid+1,high);
+                 merge(a,low,high,mid);
+     }
+}
+
+merge(int a[],int low,int high,int mid)
+{
+          int i=low,j=mid+1,k=low,c[500];
+          while(i<=mid&&j<=high)
+          {
+                         if(a[i]<a[j])
+                         {
+                                      c[k]=a[i];
+                                      i++;
+                                      k++;
+                         }
+                         else
+                         {
+                                      c[k]=a[j];
+                                      j++;
+                                      k++;
+                         }
+          }
+          while(i<=mid)
+          {
+                       c[k]=a[i];
+                       i++;
+                       k++;
+          }
+          while(j<=high)
+          {
+                        c[k]=a[j];
+                        j++;
+                        k++;
+          }
+          for(i=low;i<k;i++)
+                     a[i]=c[i];
+}          
+main()
+{
+      int p[1000],q[1000],i,min,v,j,k=0,l=0,a[1000],b[1000],x,m,n,t;
+      scanf("%d",&t);
+      while(t){
+      scanf("%d",&i);
+      for(j=0;j<i;j++)
+      scanf("%d",&p[j]);
+      merge_sort(p,0,i-1);
+      a[0]=p[0];
+      x=1;
+      k=0;
+      while(k<(i-1))
+      {
+         if(p[k+1]!=p[k]){
+          a[x]=p[k+1];
+        x++;}
+        k++;
+        }
+        m=x;  
+      scanf("%d",&i);
+      for(j=0;j<i;j++)
+      scanf("%d",&q[j]);
+      merge_sort(q,0,i-1);
+      b[0]=q[0];
+      x=1;
+      k=0;
+      while(k<(i-1))
+      {
+         if(q[k+1]!=q[k]){
+          b[x]=q[k+1];
+        x++;}
+        k++;
+        }
+        n=x;  
+      if(a[0]>b[0])
+                   min=a[0]-b[0];
+                   else
+                   min=b[0]-a[0];
+                   k=0;l=0;
+      while(min!=0&&k<m&&l<n)
+      {
+                             if(a[k]>b[l]){
+               v=a[k]-b[l];
+               if(v<min)
+               min=v;
+               l++;}
+               else
+               {
+                   v=b[l]-a[k];
+                   if(v<min)
+                   min=v;
+                   k++;
+                   }
+                   }
+         printf("%d",min); 
+         t--;}
+         getch();
+         }         
+                          
+      
